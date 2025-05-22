@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esquema Operativo Interactivo: TPL N°1 - Ing. Rubén Solís</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .task-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-left-width: 4px;
+            border-left-color: #4a90e2;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .task-item:hover {
+            background-color: #e9f2fa;
+            border-left-color: #357abd;
+        }
+        .task-item.completed {
+            background-color: #e6fffa; /* Tailwind teal-50 */
+            border-left-color: #38b2ac; /* Tailwind teal-500 */
+            text-decoration: line-through;
+            color: #718096; /* Tailwind gray-500 */
+        }
+        .task-item.completed .emoji {
+            filter: grayscale(80%);
+            opacity: 0.7;
+        }
+        .task-number {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #4a90e2;
+        }
+        .completed .task-number {
+            color: #38b2ac;
+        }
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c5282; /* Tailwind blue-800 */
+            margin-top: 24px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #cbd5e0; /* Tailwind gray-300 */
+        }
+        .subsection-title {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #3182ce; /* Tailwind blue-600 */
+            margin-top: 16px;
+            margin-bottom: 12px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        .detail-list {
+            list-style-type: disc;
+            margin-left: 40px;
+            margin-top: 8px;
+            color: #4a5568; /* Tailwind gray-700 */
+        }
+        .completed .detail-list {
+             color: #a0aec0; /* Tailwind gray-400 */
+        }
+        .reset-button {
+            background-color: #e53e3e; /* Tailwind red-600 */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            border: none;
+        }
+        .reset-button:hover {
+            background-color: #c53030; /* Tailwind red-700 */
+        }
+        .info-box {
+            background-color: #ebf8ff; /* Tailwind blue-50 */
+            border-left: 4px solid #4299e1; /* Tailwind blue-500 */
+            padding: 12px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #2b6cb0; /* Tailwind blue-700 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">Esquema Operativo Interactivo: TPL N°1</h1>
+        <p class="text-center text-gray-600 mb-6">Haz clic en cada paso para marcarlo como completado.</p>
+        <button id="resetAll" class="reset-button mb-6">Reiniciar Todo</button>
+
+        <h2 class="section-title">Parte 3.1: Medición de Volúmenes con Diferentes Materiales de Vidrio y Estimación del Error</h2>
+
+        <h3 class="subsection-title">A. Uso de Bureta</h3>
+        <ul id="bureta-tasks">
+            <li class="task-item"><span class="emoji">🔩</span><span class="task-number">1.</span>Montar bureta en soporte. Asegurar verticalidad.</li>
+            <li class="task-item"><span class="emoji">💧</span><span class="task-number">2.</span>Llenar bureta con agua (H₂O) hasta pasar la marca de 0 mL.</li>
+            <li class="task-item"><span class="emoji">🎯</span><span class="task-number">3.</span>Enrasar a 0 mL (menisco sobre la marca de 0). Eliminar burbujas de aire.</li>
+            <li class="task-item"><span class="emoji">🧪</span><span class="task-number">4.</span>Verter 24.5 mL en probeta (de 50 mL o 100 mL según indicación).</li>
+            <li class="task-item"><span class="emoji">👀</span><span class="task-number">5.</span>Leer volumen en la probeta. Anotar el valor.</li>
+            <li class="task-item"><span class="emoji">🔄</span><span class="task-number">6.</span>Repetir procedimiento 3 veces (Pasos 3 a 5).</li>
+            <li class="task-item"><span class="emoji">📊</span><span class="task-number">7.</span>Calcular promedio de los volúmenes medidos en probeta.</li>
+            <li class="task-item"><span class="emoji">📝</span><span class="task-number">8.</span>Registrar todos los datos en tabla.</li>
+        </ul>
+
+        <h3 class="subsection-title">B. Uso de Pipeta (Transferencia de 10 mL)</h3>
+        <div class="info-box">
+            <span class="emoji">🛠️</span> Materiales: Vaso de precipitados con H₂O, Pipeta graduada/aforada de 10mL, Propipeta ("perita de goma").
+        </div>
+        <ul id="pipeta10ml-tasks">
+            <li class="task-item"><span class="emoji">👌</span><span class="task-number">1.</span>Tomar pipeta adecuada. Verificar limpieza.</li>
+            <li class="task-item"><span class="emoji">💨</span><span class="task-number">2.</span>Con propipeta, aspirar agua del vaso de precipitados hasta enrasar a 0 mL.</li>
+            <li class="task-item"><span class="emoji">🧪</span><span class="task-number">3.</span>Transferir cuantitativamente 10 mL de agua a una probeta limpia y seca (de 25 mL o 10 mL).</li>
+            <li class="task-item"><span class="emoji">👀</span><span class="task-number">4.</span>Leer volumen en la probeta. Anotar el valor.</li>
+            <li class="task-item"><span class="emoji">🔄</span><span class="task-number">5.</span>Repetir procedimiento 3 veces (Pasos 2 a 4).</li>
+            <li class="task-item"><span class="emoji">📊</span><span class="task-number">6.</span>Calcular promedio de los volúmenes medidos en probeta.</li>
+            <li class="task-item"><span class="emoji">📝</span><span class="task-number">7.</span>Registrar todos los datos en tabla.</li>
+        </ul>
+
+        <h3 class="subsection-title">C. Uso de Pipeta (Transferencia de 5.4 mL)</h3>
+         <div class="info-box">
+            <span class="emoji">🛠️</span> Materiales: Vaso de precipitados con H₂O, Pipeta graduada adecuada, Propipeta.
+        </div>
+        <ul id="pipeta5_4ml-tasks">
+            <li class="task-item"><span class="emoji">👌</span><span class="task-number">1.</span>Tomar pipeta adecuada. Verificar limpieza.</li>
+            <li class="task-item"><span class="emoji">💨</span><span class="task-number">2.</span>Con propipeta, aspirar agua del vaso de precipitados hasta enrasar a 0 mL.</li>
+            <li class="task-item"><span class="emoji">🧪</span><span class="task-number">3.</span>Transferir cuantitativamente 5.4 mL de agua a una probeta limpia y seca (de 25 mL o 10 mL).</li>
+            <li class="task-item"><span class="emoji">👀</span><span class="task-number">4.</span>Leer volumen en la probeta. Anotar el valor.</li>
+            <li class="task-item"><span class="emoji">🔄</span><span class="task-number">5.</span>Repetir procedimiento 3 veces (Pasos 2 a 4).</li>
+            <li class="task-item"><span class="emoji">📊</span><span class="task-number">6.</span>Calcular promedio de los volúmenes medidos en probeta.</li>
+            <li class="task-item"><span class="emoji">📝</span><span class="task-number">7.</span>Registrar todos los datos en tabla.</li>
+        </ul>
+
+        <h2 class="section-title">Parte 3.2: Separación de los Componentes de una Mezcla Heterogénea (Aplicando Disolución y Filtración)</h2>
+        <div class="info-box">
+            <span class="emoji">🧱</span> Material inicial: Muestra de sal en bloques.
+        </div>
+        <ul id="separacion-tasks">
+            <li class="task-item"><span class="emoji">⚖️</span><span class="task-number">1.</span>Pesar en balanza granataria 11.15 g de la muestra de sal. Usar papel de aluminio o vidrio de reloj.</li>
+            <li class="task-item"><span class="emoji">➡️</span><span class="task-number">2.</span>Trasvasar la sal pesada a un mortero.</li>
+            <li class="task-item"><span class="emoji">🔨</span><span class="task-number">3.</span>Moler la sal en el mortero con el pilón hasta obtener tamaño homogéneo.</li>
+            <li class="task-item"><span class="emoji">⚖️</span><span class="task-number">4.</span>Pesar 8.53 g de la muestra de sal molida en balanza granataria.</li>
+            <li class="task-item"><span class="emoji">➡️</span><span class="task-number">5.</span>Trasvasar la sal molida (8.53 g) a un vaso de precipitado.</li>
+            <li class="task-item"><span class="emoji">💧</span><span class="task-number">6.</span>Medir con probeta entre 100 y 200 mL de agua corriente.</li>
+            <li class="task-item"><span class="emoji">🥄</span><span class="task-number">7.</span>Agregar el agua medida al vaso de precipitado con la sal. Mezclar con varilla de vidrio hasta disolver los cristales de sal.</li>
+            <li class="task-item" id="filtracion-main-step">
+                <span class="emoji">⏳</span><span class="task-number">8.</span>**FILTRACIÓN** (para separar fase sólida).
+                <ul class="detail-list hidden">
+                    <li class="task-item-detail"><span class="emoji">📄</span><span class="task-number">8.1.</span>Preparar el filtro de papel: Doblar en forma de cono o pliegues.</li>
+                    <li class="task-item-detail"><span class="emoji">🏗️</span><span class="task-number">8.2.</span>Preparar el montaje de filtración: Soporte universal, aro, embudo con el papel de filtro, y vaso de precipitado receptor debajo.</li>
+                    <li class="task-item-detail"><span class="emoji">🌊</span><span class="task-number">8.3.</span>Decantación: Verter cuidadosamente la mayor parte del líquido (sobrenadante) a través del filtro, reteniendo el sólido en el vaso original.</li>
+                    <li class="task-item-detail"><span class="emoji">🧼</span><span class="task-number">8.4.</span>Lavado: Añadir pequeña cantidad de agua (solvente de lavado) al sólido en el vaso original, agitar y decantar nuevamente el líquido a través del filtro.</li>
+                    <li class="task-item-detail"><span class="emoji">↪️</span><span class="task-number">8.5.</span>Transferencia del sólido: Trasvasar el sólido restante y el líquido al filtro. Usar varilla de vidrio para guiar el flujo y pequeños chorros de agua (piseta) para arrastrar todo el sólido. No llenar el filtro más de 3/4 partes.</li>
+                </ul>
+            </li>
+             <li class="task-item"><span class="emoji">🏆</span><span class="task-number">9.</span>Resultado:
+                <ul class="detail-list">
+                    <li>Sólido retenido en el papel de filtro.</li>
+                    <li>Líquido filtrado recogido en el vaso receptor.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Selecciona todos los elementos de tarea
+        const taskItems = document.querySelectorAll('.task-item');
+        const resetButton = document.getElementById('resetAll');
+
+        // Función para marcar/desmarcar una tarea
+        function toggleTask(event) {
+            // Prevenir que el evento se propague a elementos padres si es un sub-elemento
+            if (event.target !== this && !this.contains(event.target)) {
+                 return;
+            }
+            // Si el click es en un sub-elemento de la lista de detalles, no hacer nada aquí
+            if (event.target.classList.contains('task-item-detail') || event.target.closest('.task-item-detail')) {
+                return;
+            }
+
+            this.classList.toggle('completed');
+            
+            // Guardar estado en localStorage
+            const taskId = this.textContent.trim().substring(0, 50); // Usar parte del texto como ID
+            if (this.classList.contains('completed')) {
+                localStorage.setItem(taskId, 'completed');
+            } else {
+                localStorage.removeItem(taskId);
+            }
+
+            // Manejo especial para el paso de filtración y sus sub-pasos
+            if (this.id === 'filtracion-main-step') {
+                const detailList = this.querySelector('.detail-list');
+                if (detailList) {
+                    detailList.classList.toggle('hidden', !this.classList.contains('completed'));
+                }
+            }
+        }
+        
+        // Cargar estados desde localStorage al cargar la página
+        function loadTaskStates() {
+            taskItems.forEach(item => {
+                const taskId = item.textContent.trim().substring(0, 50);
+                if (localStorage.getItem(taskId) === 'completed') {
+                    item.classList.add('completed');
+                }
+                // Para el paso de filtración, mostrar/ocultar detalles según estado
+                if (item.id === 'filtracion-main-step') {
+                    const detailList = item.querySelector('.detail-list');
+                     if (detailList) {
+                        detailList.classList.toggle('hidden', !item.classList.contains('completed'));
+                     }
+                }
+            });
+        }
+
+        // Añadir event listener a cada tarea
+        taskItems.forEach(item => {
+            item.addEventListener('click', toggleTask);
+        });
+
+        // Funcionalidad del botón de reinicio
+        resetButton.addEventListener('click', () => {
+            taskItems.forEach(item => {
+                item.classList.remove('completed');
+                const taskId = item.textContent.trim().substring(0, 50);
+                localStorage.removeItem(taskId);
+                 // Ocultar detalles de filtración al reiniciar
+                if (item.id === 'filtracion-main-step') {
+                    const detailList = item.querySelector('.detail-list');
+                    if (detailList) {
+                        detailList.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Cargar estados al iniciar
+        window.addEventListener('load', loadTaskStates);
+
+        // Lógica para mostrar/ocultar sub-pasos de filtración al hacer clic en el paso principal
+        const filtracionMainStep = document.getElementById('filtracion-main-step');
+        if (filtracionMainStep) {
+            filtracionMainStep.addEventListener('click', function(event) {
+                 // Solo actuar si el click es directamente en el paso principal y no en los detalles
+                if (event.target === this || this.querySelector('.emoji') === event.target || this.querySelector('.task-number') === event.target || event.target.tagName === 'STRONG') {
+                    const detailList = this.querySelector('.detail-list');
+                    if (detailList) {
+                        detailList.classList.toggle('hidden');
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
